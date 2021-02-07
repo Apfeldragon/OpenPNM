@@ -288,10 +288,10 @@ class DonnanMultiphysicsSolver(NernstPlanckMultiphysicsSolver):
                         a._A_t = a._A.copy()
                         a._b_t = a._b.copy()
 
-                    # update pore.potential_old
+                    # update _old properties
                     for obj in phys:
-                        obj[p_alg.settings['quantity']
-                            + '_old'] = g_old[p_alg.name]
+                        obj[p_alg.settings['old_prop']+'_old'] = obj[p_alg.settings['old_prop']]
+                        obj[e_alg[0].settings['old_prop']+'_old'] = obj[e_alg[0].settings['old_prop']]
 
                 else:  # Stop time iterations if residual < t_tolerance
                     # Output steady state solution
